@@ -1,0 +1,22 @@
+/**
+ * @description       : 
+ * @author            : Rubén Fortes-Marques Sánchez
+ * @group             : 
+ * @last modified on  : 10-11-2022
+ * @last modified by  : Rubén Fortes-Marques Sánchez
+**/
+import { LightningElement, api } from 'lwc';
+import ursusResources from '@salesforce/resourceUrl/ursus_park';
+export default class BearTile extends LightningElement {
+	@api bear;
+	appResources = {
+		bearSilhouette: `${ursusResources}/standing-bear-silhouette.png`,
+	};
+
+    handleOpenRecordClick() {
+        const selectEvent = new CustomEvent('bearview', {
+            detail: this.bear.Id
+        });
+        this.dispatchEvent(selectEvent);
+    }
+}
